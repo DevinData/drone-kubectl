@@ -7,6 +7,7 @@ USER root
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git && \
+    apt-get install -y ssh && \
     git config --global user.name "CI bot" && \
     git config --global user.email "ci@devindata.com"
 
