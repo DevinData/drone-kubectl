@@ -22,13 +22,11 @@ if [ ! -z ${PLUGIN_KUBERNETES_CERT} ]; then
   KUBERNETES_CERT=${PLUGIN_KUBERNETES_CERT}
 fi
 
-if [ ! -z ${PLUGIN_GIT_SSHKEY} ]; then
-  SSH_KEY=${PLUGIN_GIT_SSHKEY}
-  mkdir /root/.ssh/
-  echo "${SSH_KEY}" > /root/.ssh/id_rsa
-  touch /root/.ssh/known_hosts
-  ssh-keyscan git.devindata.com >> /root/.ssh/known_hosts
-fi
+SSH_KEY=${PLUGIN_GIT_SSHKEY}
+mkdir /root/.ssh/
+echo "${SSH_KEY}" > /root/.ssh/id_rsa
+touch /root/.ssh/known_hosts
+ssh-keyscan git.devindata.com >> /root/.ssh/known_hosts
 
 kubectl config set-credentials default --token=${KUBERNETES_TOKEN}
 
